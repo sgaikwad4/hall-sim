@@ -1,34 +1,27 @@
-// Check if the W key has been pressed
-if(keyboard_check(ord("A")))
-{
-	// Move the person up
-	motion_set(180,5);
+// Step Event
+
+var move_speed = normal_speed;  // Default move speed
+
+// Check if slowed down and reduce speed if necessary
+if (is_slowed) {
+    move_speed = normal_speed * slowdown_factor;
+    slowdown_timer -= delta_time;
+    
+    if (slowdown_timer <= 0) {
+        is_slowed = false; // End slowdown
+    }
 }
 
-//Check if the S key is pressed
-else if(keyboard_check(ord("D")))
-{
-	motion_set(0,5);
+// WASD Movement
+if (keyboard_check(ord("W"))) {
+    y -= move_speed;
 }
-
-else if(keyboard_check(ord("W")))
-{
-	motion_set(90,5);
+if (keyboard_check(ord("S"))) {
+    y += move_speed;
 }
-
-else if(keyboard_check(ord("S")))
-{
-	motion_set(270,5);
+if (keyboard_check(ord("A"))) {
+    x -= move_speed;
 }
-
-// if no key has been pressed
-else
-{
-	motion_set(0,0);
+if (keyboard_check(ord("D"))) {
+    x += move_speed;
 }
-
-
-
-
-
-

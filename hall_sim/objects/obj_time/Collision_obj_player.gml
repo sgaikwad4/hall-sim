@@ -1,4 +1,1 @@
-if (seconds <= 25);
-{
-
-}
+room_goto(Room2)
